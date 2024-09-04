@@ -9,6 +9,22 @@ public class Employee extends User {
 		
 		this.branch_id = branch_id;
 		this.role = role;
+	}
+
+	public int getBranch_id() {
+		return branch_id;
+	}
+
+	public void setBranch_id(int branch_id) {
+		this.branch_id = branch_id;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}  
 	
 	
