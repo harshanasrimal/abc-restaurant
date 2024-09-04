@@ -16,16 +16,45 @@
   	<description></description>
   	<servlet-class>controllers.AuthController</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>CategoryController</servlet-name>
+  	<display-name>CategoryController</display-name>
+  	<description></description>
+  	<servlet-class>controllers.CategoryController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>BranchController</servlet-name>
+  	<display-name>BranchController</display-name>
+  	<description></description>
+  	<servlet-class>controllers.BranchController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ProductController</servlet-name>
+  	<display-name>ProductController</display-name>
+  	<description></description>
+  	<servlet-class>controllers.ProductController</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>HomeController</servlet-name>
   	<url-pattern>/</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>default</servlet-name>
     <url-pattern>/assets/*</url-pattern> <!-- This assumes your static files are in /assets folder -->
 </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>AuthController</servlet-name>
   	<url-pattern>/auth/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>CategoryController</servlet-name>
+  	<url-pattern>/categories/</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>BranchController</servlet-name>
+  	<url-pattern>/branches/</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ProductController</servlet-name>
+  	<url-pattern>/products/</url-pattern>
   </servlet-mapping>
 </web-app>
