@@ -1,4 +1,4 @@
-package model;
+package models;
 
 public class Customer extends User {
     private String contactNumber;

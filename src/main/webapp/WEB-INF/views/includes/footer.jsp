@@ -1,4 +1,4 @@
- <%@ include file="/WEB-INF/includes/cartDrawer.jsp" %>
+ <%@ include file="/WEB-INF/views/includes/cartDrawer.jsp" %>
 
 <!-- footer section -->
   <footer class="footer_section">
@@ -80,12 +80,12 @@
   <!-- footer section -->
 
   <!-- jQuery -->
-  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="assets/js/jquery-3.4.1.min.js"></script>
   <!-- POPPER JS -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
   </script>
   <!-- bootstrap JS-->
-  <script src="js/bootstrap.js"></script>
+  <script src="assets/js/bootstrap.js"></script>
   <!-- owl slider -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
   </script>
@@ -94,5 +94,5 @@
   <!-- nice select -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
   <!-- custom JS -->
-  <script src="js/custom.js"></script>
+  <script src="assets/js/custom.js"></script>
   

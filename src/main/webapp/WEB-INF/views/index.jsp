@@ -5,11 +5,11 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <link rel="shortcut icon" href="images/favicon.png" type="">
+  <link rel="shortcut icon" href="assets/images/favicon.png" type="">
 
   <title> ABC Restaurant </title>
 
-<%@ include file="/WEB-INF/includes/head.jsp" %>
+<%@ include file="/WEB-INF/views/includes/head.jsp" %>
 
 </head>
 
@@ -17,10 +17,10 @@
 
   <div class="hero_area">
     <div class="bg-box">
-      <img src="images/hero-bg.jpg" alt="">
+      <img src="assets/images/hero-bg.jpg" alt="">
     </div>
     
-<%@ include file="/WEB-INF/includes/header.jsp" %>
+<%@ include file="/WEB-INF/views/includes/header.jsp" %>
 
     <!-- slider section -->
     <section class="slider_section ">
@@ -112,7 +112,7 @@
           <div class="col-md-6  ">
             <div class="box ">
               <div class="img-box">
-                <img src="images/o1.jpg" alt="">
+                <img src="assets/images/o1.jpg" alt="">
               </div>
               <div class="detail-box">
                 <h5>
@@ -181,7 +181,7 @@
           <div class="col-md-6  ">
             <div class="box ">
               <div class="img-box">
-                <img src="images/o2.jpg" alt="">
+                <img src="assets/images/o2.jpg" alt="">
               </div>
               <div class="detail-box">
                 <h5>
@@ -262,7 +262,7 @@
       <div class="row">
         <div class="col-md-6 ">
           <div class="img-box">
-            <img src="images/about-img.png" alt="">
+            <img src="assets/images/about-img.png" alt="">
           </div>
         </div>
         <div class="col-md-6">
@@ -331,7 +331,7 @@
 
   <!-- end client section -->
 
-  <%@ include file="/WEB-INF/includes/footer.jsp" %>
+  <%@ include file="/WEB-INF/views/includes/footer.jsp" %>
 
 </body>
 

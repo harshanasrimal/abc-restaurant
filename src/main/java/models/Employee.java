@@ -1,4 +1,4 @@
-package model;
+package models;
 
 public class Employee extends User {
 	private int branch_id;
