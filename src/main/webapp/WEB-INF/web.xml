@@ -40,6 +40,12 @@
   	<description></description>
   	<servlet-class>controllers.MenuController</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>EmployeeController</servlet-name>
+  	<display-name>EmployeeController</display-name>
+  	<description></description>
+  	<servlet-class>controllers.EmployeeController</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>HomeController</servlet-name>
   	<url-pattern>/</url-pattern>
@@ -67,5 +73,9 @@
   <servlet-mapping>
   	<servlet-name>MenuController</servlet-name>
   	<url-pattern>/menu/</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>EmployeeController</servlet-name>
+  	<url-pattern>/admin/employees/</url-pattern>
   </servlet-mapping>
 </web-app>
