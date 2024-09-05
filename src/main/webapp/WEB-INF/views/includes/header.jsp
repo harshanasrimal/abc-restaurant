@@ -16,7 +16,8 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav  mx-auto ">
-          <c:if test="${not empty role}">
+<c:choose>
+    <c:when test="${isStaff}">
             <li class="nav-item">
               <a class="nav-link" href="${pageContext.request.contextPath}/admin/categories/?action=list">Categories</a>
             </li>
@@ -29,9 +30,8 @@
             <li class="nav-item">
               <a class="nav-link" href="${pageContext.request.contextPath}/admin/employees/?action=list">Employees</a>
             </li>
-            </c:if>
-            
-          <c:if test="${empty role}">
+    </c:when>
+    <c:otherwise>
             <li class="nav-item active">
               <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
@@ -41,7 +41,8 @@
             <li class="nav-item">
               <a class="nav-link" href="about.html">About</a>
             </li>
-            </c:if>
+    </c:otherwise>
+</c:choose>
           </ul>
           <div class="user_option">
             <div class="dropdown">
@@ -53,8 +54,14 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                   <a class="dropdown-item" href="profile.html">Profile</a>
                   <a class="dropdown-item" href="orders.html">Orders</a>
-                  <a class="dropdown-item"
-                    href="${pageContext.request.contextPath}/auth/staff/?action=logout">Logout</a>
+<c:choose>
+    <c:when test="${isStaff}">
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/auth/staff/?action=logout">Logout</a>
+    </c:when>
+    <c:otherwise>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/auth/?action=logout">Logout</a>
+    </c:otherwise>
+</c:choose>
                 </div>
               </c:if>
               <c:if test="${empty loggedInUser}">
@@ -63,12 +70,13 @@
                   <i class="fa fa-sign-in" aria-hidden="true"></i> Login / Register
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href="${pageContext.request.contextPath}/auth/login">Login</a>
-                  <a class="dropdown-item" href="${pageContext.request.contextPath}/auth/Register">Register</a>
+                  <a class="dropdown-item" href="${pageContext.request.contextPath}/auth/?action=login">Login</a>
+                  <a class="dropdown-item" href="${pageContext.request.contextPath}/auth/?action=register">Register</a>
+                  <a class="dropdown-item" href="${pageContext.request.contextPath}/auth/staff/?action=login">Staff Login</a>
                 </div>
               </c:if>
             </div>
-            <c:if test="${empty role}">
+            <c:if test="${not isStaff}">
             <button class="order_online" type="button" data-toggle="modal" data-target="#cartDrawer">
               <i class="fas fa-shopping-cart"></i> Cart
             </button>

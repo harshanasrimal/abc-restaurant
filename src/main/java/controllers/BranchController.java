@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import models.Branch;
 import services.BranchServices;
+import utils.AuthUtil;
 
 /**
  * Servlet implementation class BranchController
@@ -35,6 +36,11 @@ public class BranchController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
+        
+        if(!AuthUtil.checkAuthorization(request, response, "admin")) {
+        	System.out.println("Unauthorized");
+        	return;
+        }
         
         if (action == null) {
             // Default action or handle missing action

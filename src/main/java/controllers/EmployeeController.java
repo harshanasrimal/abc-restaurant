@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import models.Employee;
 import services.BranchServices;
 import services.EmployeeServices;
-
+import utils.AuthUtil;
 /**
  * Servlet implementation class EmployeeController
  */
@@ -35,6 +35,10 @@ public class EmployeeController extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
+        if(!AuthUtil.checkAuthorization(request, response, "admin")) {
+        	System.out.println("Unauthorized");
+        	return;
+        }
 
         if (action == null) {
             response.sendRedirect(request.getContextPath() + "/admin/employees/?action=list");

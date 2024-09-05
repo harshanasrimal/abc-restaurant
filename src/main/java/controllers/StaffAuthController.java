@@ -75,7 +75,7 @@ public class StaffAuthController extends HttpServlet {
                 // Valid staff login
                 HttpSession session = request.getSession();
                 session.setAttribute("loggedInUser", employee);
-                session.setAttribute("role", employee.getRole());
+                session.setAttribute("isStaff", true);
                 response.sendRedirect(request.getContextPath() + "/"+employee.getRole()+"/dashboard"); // Redirect to dashboard
             } else {
                 // Invalid login

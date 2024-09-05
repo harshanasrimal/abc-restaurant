@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import models.Product;
 import services.CategoryServices;
 import services.ProductService;
+import utils.AuthUtil;
 
 /**
  * Servlet implementation class ProductController
@@ -36,6 +37,11 @@ public class ProductController extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
+        
+        if(!AuthUtil.checkAuthorization(request, response, "admin")) {
+        	System.out.println("Unauthorized");
+        	return;
+        }
         
         if (action == null) {
             response.sendRedirect(request.getContextPath() + "/admin/products/?action=list");
