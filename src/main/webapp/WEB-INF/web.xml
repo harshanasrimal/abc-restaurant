@@ -39,6 +39,7 @@
   	<url-pattern>/</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
+  <servlet-name>default</servlet-name>
     <url-pattern>/assets/*</url-pattern> <!-- This assumes your static files are in /assets folder -->
 </servlet-mapping>
   <servlet-mapping>

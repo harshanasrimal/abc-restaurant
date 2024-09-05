@@ -33,6 +33,13 @@ public class DBConnection {
 	}
 
 	public Connection getConnection() {
-		return connection;
+	    try {
+	        if (this.connection == null || this.connection.isClosed()) {
+	            this.connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return connection;
 	}
 }
