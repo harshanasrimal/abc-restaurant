@@ -38,7 +38,7 @@ public class ProductController extends HttpServlet {
         String action = request.getParameter("action");
         
         if (action == null) {
-            response.sendRedirect(request.getContextPath() + "/products/?action=list");
+            response.sendRedirect(request.getContextPath() + "/admin/products/?action=list");
             return;
         }
 
@@ -130,7 +130,7 @@ public class ProductController extends HttpServlet {
 
         try {
             productService.addProduct(new Product(name, description, price, categoryId, image, active));
-            response.sendRedirect(request.getContextPath() + "/products/?action=list");
+            response.sendRedirect(request.getContextPath() + "/admin/products/?action=list");
         } catch (Exception e) {
             request.setAttribute("error", e);
             showCreateForm(request, response);
@@ -146,7 +146,7 @@ public class ProductController extends HttpServlet {
         } catch (Exception e) {
             request.setAttribute("error", e);
         }
-        response.sendRedirect(request.getContextPath() + "/products/?action=list");
+        response.sendRedirect(request.getContextPath() + "/admin/products/?action=list");
     }
 
     // Method to handle product update (UPDATE operation)
@@ -161,7 +161,7 @@ public class ProductController extends HttpServlet {
 
         try {
             productService.updateProduct(new Product(id, name, description, price, categoryId, image, active));
-            response.sendRedirect(request.getContextPath() + "/products/?action=list");
+            response.sendRedirect(request.getContextPath() + "/admin/products/?action=list");
         } catch (Exception e) {
             request.setAttribute("error", e);
             showUpdateForm(request, response);

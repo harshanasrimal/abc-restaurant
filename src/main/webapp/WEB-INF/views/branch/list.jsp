@@ -36,7 +36,7 @@
       </div>
     </div>
     <div class="col-md-6">
-    <a href="branches/?action=create" class="btn btn-primary" style="float: right;"><i class="fas fa-plus"></i> New Branch</a>
+    <a href="admin/branches/?action=create" class="btn btn-primary" style="float: right;"><i class="fas fa-plus"></i> New Branch</a>
     </div>
     </div>
       <div class="row">
@@ -61,7 +61,7 @@
       <th scope="row">${ branch.id }</th>
       <td>${ branch.location }</td>
       <td>${ branch.description }</td>
-      <td><a href="branches/?action=update&id=${ branch.id }"><i class="fas fa-edit"></i></a> | <a href="branches/?action=delete&id=${ branch.id }"><i class="fas fa-trash"></i></a></td>
+      <td><a href="admin/branches/?action=update&id=${ branch.id }"><i class="fas fa-edit"></i></a> | <a href="admin/branches/?action=delete&id=${ branch.id }"><i class="fas fa-trash"></i></a></td>
     </tr>
     </c:forEach>
   </tbody>

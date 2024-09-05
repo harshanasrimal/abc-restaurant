@@ -38,7 +38,7 @@ public class CategoryController extends HttpServlet {
         
         if (action == null) {
             // Default action or handle missing action
-            response.sendRedirect(request.getContextPath() + "/categories/?action=list");
+            response.sendRedirect(request.getContextPath() + "/admin/categories/?action=list");
             return;
         }
 
@@ -128,7 +128,7 @@ public class CategoryController extends HttpServlet {
         // Insert the category into the database
         try {
         	categoryServices.addCategory(new Category(categoryName,description));
-        	response.sendRedirect(request.getContextPath() + "/categories/?action=list");			
+        	response.sendRedirect(request.getContextPath() + "/admin/categories/?action=list");			
 		} catch (Exception e) {
 			request.setAttribute("error", e);
 			showCreateForm(request, response);
@@ -144,7 +144,7 @@ public class CategoryController extends HttpServlet {
 		} catch (Exception e) {
 			request.setAttribute("error", e);
 		}
-        response.sendRedirect(request.getContextPath() + "/categories/?action=list");	
+        response.sendRedirect(request.getContextPath() + "/admin/categories/?action=list");	
     }
     
     private void updateCategory(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -155,7 +155,7 @@ public class CategoryController extends HttpServlet {
         // Insert the category into the database
         try {
         	categoryServices.updateCategory(new Category(id,categoryName,description));
-        	response.sendRedirect(request.getContextPath() + "/categories/?action=list");			
+        	response.sendRedirect(request.getContextPath() + "/admin/categories/?action=list");			
 		} catch (Exception e) {
 			request.setAttribute("error", e);
 			showCreateForm(request, response);

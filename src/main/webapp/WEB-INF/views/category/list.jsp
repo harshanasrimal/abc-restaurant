@@ -36,7 +36,7 @@
       </div>
     </div>
     <div class="col-md-6">
-    <a href="categories/?action=create" class="btn btn-primary" style="float: right;"><i class="fas fa-plus"></i> New Category</a>
+    <a href="admin/categories/?action=create" class="btn btn-primary" style="float: right;"><i class="fas fa-plus"></i> New Category</a>
     </div>
     </div>
       <div class="row">
@@ -61,7 +61,7 @@
       <th scope="row">${ category.id }</th>
       <td>${ category.name }</td>
       <td>${ category.description }</td>
-      <td><a href="categories/?action=update&id=${ category.id }"><i class="fas fa-edit"></i></a> | <a href="categories/?action=delete&id=${ category.id }"><i class="fas fa-trash"></i></a></td>
+      <td><a href="admin/categories/?action=update&id=${ category.id }"><i class="fas fa-edit"></i></a> | <a href="admin/categories/?action=delete&id=${ category.id }"><i class="fas fa-trash"></i></a></td>
     </tr>
     </c:forEach>
   </tbody>

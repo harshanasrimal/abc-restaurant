@@ -54,15 +54,15 @@
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>CategoryController</servlet-name>
-  	<url-pattern>/categories/</url-pattern>
+  	<url-pattern>/admin/categories/</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>BranchController</servlet-name>
-  	<url-pattern>/branches/</url-pattern>
+  	<url-pattern>/admin/branches/</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>ProductController</servlet-name>
-  	<url-pattern>/products/</url-pattern>
+  	<url-pattern>/admin/products/</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>MenuController</servlet-name>

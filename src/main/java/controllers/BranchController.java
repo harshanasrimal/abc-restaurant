@@ -38,7 +38,7 @@ public class BranchController extends HttpServlet {
         
         if (action == null) {
             // Default action or handle missing action
-            response.sendRedirect(request.getContextPath() + "/branches/?action=list");
+            response.sendRedirect(request.getContextPath() + "/admin/branches/?action=list");
             return;
         }
 
@@ -128,7 +128,7 @@ public class BranchController extends HttpServlet {
         // Insert the branch into the database
         try {
         	branchServices.addBranch(new Branch(branchLocation,description));
-        	response.sendRedirect(request.getContextPath() + "/branches/?action=list");			
+        	response.sendRedirect(request.getContextPath() + "/admin/branches/?action=list");			
 		} catch (Exception e) {
 			request.setAttribute("error", e);
 			showCreateForm(request, response);
@@ -144,7 +144,7 @@ public class BranchController extends HttpServlet {
 		} catch (Exception e) {
 			request.setAttribute("error", e);
 		}
-        response.sendRedirect(request.getContextPath() + "/branches/?action=list");	
+        response.sendRedirect(request.getContextPath() + "/admin/branches/?action=list");	
     }
     
     private void updateBranch(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -155,7 +155,7 @@ public class BranchController extends HttpServlet {
         // Insert the branch into the database
         try {
         	branchServices.updateBranch(new Branch(id,branchLocation,description));
-        	response.sendRedirect(request.getContextPath() + "/branches/?action=list");			
+        	response.sendRedirect(request.getContextPath() + "/admin/branches/?action=list");			
 		} catch (Exception e) {
 			request.setAttribute("error", e);
 			showCreateForm(request, response);

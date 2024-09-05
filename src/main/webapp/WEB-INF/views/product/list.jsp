@@ -36,7 +36,7 @@
       </div>
     </div>
     <div class="col-md-6">
-    <a href="products/?action=create" class="btn btn-primary" style="float: right;"><i class="fas fa-plus"></i> New Product</a>
+    <a href="admin/products/?action=create" class="btn btn-primary" style="float: right;"><i class="fas fa-plus"></i> New Product</a>
     </div>
     </div>
       <div class="row">
@@ -69,7 +69,7 @@
       <td>${ product.price }</td>
       <td>${ product.category }</td>
       <td>${ product.active }</td>
-      <td><a href="products/?action=update&id=${ product.id }"><i class="fas fa-edit"></i></a> | <a href="products/?action=delete&id=${ product.id }"><i class="fas fa-trash"></i></a></td>
+      <td><a href="admin/products/?action=update&id=${ product.id }"><i class="fas fa-edit"></i></a> | <a href="admin/products/?action=delete&id=${ product.id }"><i class="fas fa-trash"></i></a></td>
     </tr>
     </c:forEach>
   </tbody>
