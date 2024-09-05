@@ -99,6 +99,40 @@ public class ProductDAO {
         }
         return products;
     }
+    
+    public List<Product> getProductsByCategory(int category_id) throws SQLException {
+        String query = "SELECT p.id, p.name, p.description, p.price, p.category_id, c.name AS category_name, p.image, p.active " +
+                       "FROM products p " +
+                       "JOIN categories c ON p.category_id = c.id " +
+                       "WHERE p.category_id = ?";  // Filter by category_id
+        List<Product> products = new ArrayList<>();
+        
+        try (Connection connection = DBConnectionFactory.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+             
+            // Set the category_id as a parameter
+            statement.setInt(1, category_id);
+            
+            // Execute the query
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    int id = resultSet.getInt("id");
+                    String name = resultSet.getString("name");
+                    String description = resultSet.getString("description");
+                    String image = resultSet.getString("image");
+                    BigDecimal price = resultSet.getBigDecimal("price");
+                    int categoryId = resultSet.getInt("category_id");
+                    String categoryName = resultSet.getString("category_name");
+                    boolean active = resultSet.getBoolean("active");
+
+                    // Use the overloaded constructor with category name
+                    Product product = new Product(id, name, description, price, categoryId, image, active, categoryName);
+                    products.add(product);
+                }
+            }
+        }
+        return products;
+    }
 
 
     // Method to delete a product

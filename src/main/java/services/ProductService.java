@@ -51,4 +51,7 @@ public class ProductService {
     public List<Product> getAllProducts() throws SQLException {
         return productDAO.getAllProducts();
     }
+    public List<Product> getProductsByCategory(int category_id) throws SQLException {
+        return productDAO.getProductsByCategory(category_id);
+    }
 }
