@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <link rel="shortcut icon" href="assets/images/favicon.png" type="">
 
-  <title> New Category - ABC Restaurant </title>
+  <title> New Product - ABC Restaurant </title>
 
 <%@ include file="/WEB-INF/views/includes/head.jsp" %>
 
@@ -31,12 +31,12 @@
     <div class="col-md-6">
           <div class="heading_container">
         <h2>
-         Our Categories
+         Our Products
         </h2>
       </div>
     </div>
     <div class="col-md-6">
-    <a href="categories/?action=create" class="btn btn-primary" style="float: right;"><i class="fas fa-plus"></i> New Category</a>
+    <a href="products/?action=create" class="btn btn-primary" style="float: right;"><i class="fas fa-plus"></i> New Product</a>
     </div>
     </div>
       <div class="row">
@@ -50,18 +50,26 @@
   <thead>
     <tr>
       <th scope="col">#</th>
+      <th scope="col">Image</th>
       <th scope="col">Name</th>
       <th scope="col">Description</th>
+      <th scope="col">Price (LKR)</th>
+      <th scope="col">category</th>
+      <th scope="col">active</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
-  <c:forEach items="${categories}" var="category">
+  <c:forEach items="${products}" var="product">
     <tr>
-      <th scope="row">${ category.id }</th>
-      <td>${ category.name }</td>
-      <td>${ category.description }</td>
-      <td><a href="categories/?action=update&id=${ category.id }"><i class="fas fa-edit"></i></a> | <a href="categories/?action=delete&id=${ category.id }"><i class="fas fa-trash"></i></a></td>
+      <th scope="row">${ product.id }</th>
+      <td><img style="max-height: 50px;" src="${ product.image }" /></td>
+      <td>${ product.name }</td>
+      <td>${ product.description }</td>
+      <td>${ product.price }</td>
+      <td>${ product.category }</td>
+      <td>${ product.active }</td>
+      <td><a href="products/?action=update&id=${ product.id }"><i class="fas fa-edit"></i></a> | <a href="products/?action=delete&id=${ product.id }"><i class="fas fa-trash"></i></a></td>
     </tr>
     </c:forEach>
   </tbody>
