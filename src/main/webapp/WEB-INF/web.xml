@@ -4,6 +4,19 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+     <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>filters.AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/admin/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/staff/*</url-pattern>
+    </filter-mapping>
   <servlet>
   	<servlet-name>HomeController</servlet-name>
   	<display-name>HomeController</display-name>
@@ -46,6 +59,12 @@
   	<description></description>
   	<servlet-class>controllers.EmployeeController</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>StaffAuthController</servlet-name>
+  	<display-name>StaffAuthController</display-name>
+  	<description></description>
+  	<servlet-class>controllers.StaffAuthController</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>HomeController</servlet-name>
   	<url-pattern>/</url-pattern>
@@ -77,5 +96,9 @@
   <servlet-mapping>
   	<servlet-name>EmployeeController</servlet-name>
   	<url-pattern>/admin/employees/</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>StaffAuthController</servlet-name>
+  	<url-pattern>/auth/staff/</url-pattern>
   </servlet-mapping>
 </web-app>

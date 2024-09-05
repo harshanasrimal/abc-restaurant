@@ -36,6 +36,10 @@ public class EmployeeServices {
     public Employee getEmployee(int id) throws SQLException {
         return employeeDAO.getEmployee(id);
     }
+    
+    public Employee getEmployee(String email) throws SQLException {
+        return employeeDAO.getEmployee(email);
+    }
 
     public void deleteEmployee(int id) throws SQLException {
         employeeDAO.deleteEmployee(id);

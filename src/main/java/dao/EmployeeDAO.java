@@ -69,6 +69,30 @@ public class EmployeeDAO {
         }
         return employee;
     }
+    
+    // Method to retrieve an Employee by Email
+    public Employee getEmployee(String email) throws SQLException {
+        String query = "SELECT * FROM employees WHERE email = ?";
+        Employee employee = null;
+
+        try (Connection connection = DBConnectionFactory.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+             
+            statement.setString(1, email);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+            	int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String password = resultSet.getString("password");
+                int branch_id = resultSet.getInt("branch_id");
+                String role = resultSet.getString("role");
+
+                employee = new Employee(id, name, email, password, branch_id, role);
+            }
+        }
+        return employee;
+    }
 
     // Method to retrieve all Employees
     public List<Employee> getAllEmployees() throws SQLException {

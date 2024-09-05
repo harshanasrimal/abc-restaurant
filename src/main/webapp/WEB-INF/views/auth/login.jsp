@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 
@@ -34,6 +35,11 @@
               <div class="col-md-3">
         </div>
         <div class="col-md-6">
+                  <c:if test="${not empty error}">
+              <div class="alert alert-danger">
+                  ${error}
+              </div>
+          </c:if>
           <div class="form_container">
             <form action="" method="POST">
               <div>
