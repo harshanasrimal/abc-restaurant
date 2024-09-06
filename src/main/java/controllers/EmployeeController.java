@@ -23,11 +23,11 @@ public class EmployeeController extends HttpServlet {
      */
     public EmployeeController() {
         super();
+        employeeServices = EmployeeServices.getInstance();
     }
 
-    @Override
-    public void init() throws ServletException {
-        employeeServices = EmployeeServices.getInstance(); // Initialize EmployeeServices
+    public EmployeeController(EmployeeServices employeeServices) {
+        this.employeeServices = employeeServices;  // Injected mock for testing
     }
 
     /**
