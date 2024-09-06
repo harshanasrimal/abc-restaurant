@@ -64,9 +64,9 @@
                     <h6>
                       Rs.${product.price}
                     </h6>
-                    <a href="">
+                    <span class="add-to-cart" onclick="addToCart(${product.id},'${product.name}',${product.price},'${product.image}')">
                       <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                    </a>
+                    </span>
                   </div>
                 </div>
               </div>
