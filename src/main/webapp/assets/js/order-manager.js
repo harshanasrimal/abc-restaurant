@@ -1,6 +1,21 @@
 // Initialize cart from localStorage or create an empty cart
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
+function nextStep(step) {
+    // Hide all steps
+    document.querySelectorAll('.step').forEach(function(stepDiv) {
+        stepDiv.style.display = 'none';
+    });
+
+    // Show the current step
+    document.getElementById('step' + step).style.display = 'block';
+}
+
+// Function to go back to the previous step
+function previousStep(step) {
+    nextStep(step);  // Reuse the nextStep function to show the previous step
+}
+
 // Function to render the cart items inside the modal
 function renderCart() {
     const cartItemsContainer = document.getElementById('cart-items');

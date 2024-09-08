@@ -50,6 +50,12 @@
 		<description></description>
 		<servlet-class>controllers.StaffAuthController</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>CheckoutController</servlet-name>
+		<display-name>CheckoutController</display-name>
+		<description></description>
+		<servlet-class>controllers.CheckoutController</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>HomeController</servlet-name>
 		<url-pattern>/</url-pattern>
@@ -86,5 +92,9 @@
 	<servlet-mapping>
 		<servlet-name>StaffAuthController</servlet-name>
 		<url-pattern>/auth/staff/</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CheckoutController</servlet-name>
+		<url-pattern>/checkout</url-pattern>
 	</servlet-mapping>
 </web-app>
