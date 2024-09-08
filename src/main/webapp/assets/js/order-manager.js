@@ -90,8 +90,10 @@ function removeFromCart(index) {
 // Function to handle checkout (simplified)
 function checkout() {
     const cartData = JSON.parse(localStorage.getItem('cart'));
-
-console.log(cartData);
+	const cartString = cartData.map(item => `${item.productId}:${item.quantity}`).join(',');
+	document.getElementById('cartDataInput').value = cartString;
+	localStorage.removeItem('cart');
+	document.getElementById('checkoutForm').submit();
 }
 
 // Initial render when the page loads

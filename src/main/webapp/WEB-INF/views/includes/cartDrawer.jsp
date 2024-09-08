@@ -16,7 +16,10 @@
                 <div id="cart-total"></div>
             </div> 
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="checkout()">Checkout</button>
+                <form id="checkoutForm" method="POST" action="${pageContext.request.contextPath}/checkout">
+                    <input type="hidden" name="cartData" id="cartDataInput">
+                    <button type="button" class="btn btn-primary" onclick="checkout()">Checkout</button>
+                </form>
             </div>                                                                                                                                       
         </div>                                                                                                                                                     
     </div>                                                                                                                                                         

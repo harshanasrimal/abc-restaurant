@@ -93,7 +93,7 @@ public class ProductController extends HttpServlet {
     // Method to list all products (READ operation)
     private void listProducts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            request.setAttribute("products", productService.getAllProducts());
+            request.setAttribute("products", productService.getAllProducts(""));
         } catch (Exception e) {
             request.setAttribute("error", e);
         }
