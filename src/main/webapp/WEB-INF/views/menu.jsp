@@ -32,47 +32,63 @@
         <h2>
           Our Menu
         </h2>
+        <br/>
+        <br/>
+              <!-- Search Box -->
+      <form method="get" action="menu/">
+  <c:if test="${not empty param.cat}">
+    <input type="hidden" name="cat" value="${param.cat}" />
+  </c:if>
+        <input type="text" name="search" placeholder="Search product..." value="${param.search}" />
+        <button type="submit">Search</button>
+      </form>
+      <c:if test="${not empty error}">
+    <div class="alert alert-danger">
+        ${error}
+    </div>
+</c:if>
       </div>
 
-<ul class="filters_menu">
-    <a href="menu/"><li class="${empty param.cat ? 'active' : ''}">All</li></a>
-    <c:forEach items="${categories}" var="category">
-        <a href="menu/?cat=${category.id}">
-            <li class="${param.cat == category.id ? 'active' : ''}">${category.name}</li>
-        </a>
-    </c:forEach>
-</ul>
 
+
+      <ul class="filters_menu">
+        <a href="menu/"><li class="${empty param.cat ? 'active' : ''}">All</li></a>
+        <c:forEach items="${categories}" var="category">
+            <a href="menu/?cat=${category.id}">
+                <li class="${param.cat == category.id ? 'active' : ''}">${category.name}</li>
+            </a>
+        </c:forEach>
+      </ul>
 
       <div class="filters-content">
         <div class="row grid">
-<c:forEach items="${products}" var="product">
-          <div class="col-sm-6 col-lg-4 all">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="${product.image}" alt="">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    ${product.name}
-                  </h5>
-                  <p>
-                    ${product.description}
-                  </p>
-                  <div class="options">
-                    <h6>
-                      Rs.${product.price}
-                    </h6>
-                    <span class="add-to-cart" onclick="addToCart(${product.id},'${product.name}',${product.price},'${product.image}')">
-                      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                    </span>
+          <c:forEach items="${products}" var="product">
+            <div class="col-sm-6 col-lg-4 all">
+              <div class="box">
+                <div>
+                  <div class="img-box">
+                    <img src="${product.image}" alt="">
+                  </div>
+                  <div class="detail-box">
+                    <h5>
+                      ${product.name}
+                    </h5>
+                    <p>
+                      ${product.description}
+                    </p>
+                    <div class="options">
+                      <h6>
+                        Rs.${product.price}
+                      </h6>
+                      <span class="add-to-cart" onclick="addToCart(${product.id},'${product.name}',${product.price},'${product.image}')">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-    </c:forEach>
+          </c:forEach>
         </div>
       </div>
       <div class="btn-box">

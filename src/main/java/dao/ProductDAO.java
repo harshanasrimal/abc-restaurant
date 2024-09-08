@@ -72,39 +72,60 @@ public class ProductDAO {
     }
 
     // Method to retrieve all products
-    public List<Product> getAllProducts() throws SQLException {
+    public List<Product> getAllProducts(String searchQuery) throws SQLException {
         String query = "SELECT p.id, p.name, p.description, p.price, p.category_id, c.name AS category_name, p.image, p.active " +
                        "FROM products p " +
                        "JOIN categories c ON p.category_id = c.id";
-        List<Product> products = new ArrayList<>();
-        
-        try (Connection connection = DBConnectionFactory.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query);
-             ResultSet resultSet = statement.executeQuery()) {
-             
-            while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String name = resultSet.getString("name");
-                String description = resultSet.getString("description");
-                String image = resultSet.getString("image");
-                BigDecimal price = resultSet.getBigDecimal("price");
-                int categoryId = resultSet.getInt("category_id");
-                String categoryName = resultSet.getString("category_name");  // Get category name
-                boolean active = resultSet.getBoolean("active");
 
-                // Use the overloaded constructor with category name
-                Product product = new Product(id, name, description, price, categoryId, image, active, categoryName);
-                products.add(product);
+        // Append WHERE clause only if searchQuery is not empty
+        if (!searchQuery.isEmpty()) {
+            query += " WHERE p.name LIKE ? OR p.description LIKE ?";
+        }
+
+        List<Product> products = new ArrayList<>();
+
+        try (Connection connection = DBConnectionFactory.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            // Set the search parameters only if searchQuery is not empty
+            if (!searchQuery.isEmpty()) {
+                String searchPattern = "%" + searchQuery + "%"; // For partial matching
+                statement.setString(1, searchPattern);
+                statement.setString(2, searchPattern);
+            }
+
+            // Now execute the query
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    int id = resultSet.getInt("id");
+                    String name = resultSet.getString("name");
+                    String description = resultSet.getString("description");
+                    String image = resultSet.getString("image");
+                    BigDecimal price = resultSet.getBigDecimal("price");
+                    int categoryId = resultSet.getInt("category_id");
+                    String categoryName = resultSet.getString("category_name");  // Get category name
+                    boolean active = resultSet.getBoolean("active");
+
+                    // Use the overloaded constructor with category name
+                    Product product = new Product(id, name, description, price, categoryId, image, active, categoryName);
+                    products.add(product);
+                }
             }
         }
         return products;
     }
+
     
-    public List<Product> getProductsByCategory(int category_id) throws SQLException {
+    public List<Product> getProductsByCategory(int category_id,String searchQuery) throws SQLException {
         String query = "SELECT p.id, p.name, p.description, p.price, p.category_id, c.name AS category_name, p.image, p.active " +
                        "FROM products p " +
                        "JOIN categories c ON p.category_id = c.id " +
                        "WHERE p.category_id = ?";  // Filter by category_id
+        
+        if(searchQuery != "") {
+       	 query += " AND (p.name LIKE ? OR p.description LIKE ?)";
+       }
+        
         List<Product> products = new ArrayList<>();
         
         try (Connection connection = DBConnectionFactory.getConnection();
@@ -112,6 +133,11 @@ public class ProductDAO {
              
             // Set the category_id as a parameter
             statement.setInt(1, category_id);
+            if(searchQuery != "") {
+                String searchPattern = "%" + searchQuery + "%"; // For partial matching
+                statement.setString(2, searchPattern);
+                statement.setString(3, searchPattern);
+           }
             
             // Execute the query
             try (ResultSet resultSet = statement.executeQuery()) {

@@ -48,10 +48,10 @@ public class ProductService {
     }
 
     // Method to get a list of all products
-    public List<Product> getAllProducts() throws SQLException {
-        return productDAO.getAllProducts();
+    public List<Product> getAllProducts(String searchQuery) throws SQLException {
+    		return productDAO.getAllProducts(searchQuery);    		
     }
-    public List<Product> getProductsByCategory(int category_id) throws SQLException {
-        return productDAO.getProductsByCategory(category_id);
+    public List<Product> getProductsByCategory(int category_id,String searchQuery) throws SQLException {
+    	return productDAO.getProductsByCategory(category_id,searchQuery);
     }
 }

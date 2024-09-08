@@ -30,10 +30,16 @@ public class MenuController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cat = request.getParameter("cat");
+	    String searchQuery = request.getParameter("search");
+
+	    // If searchQuery is null, set it to an empty string
+	    if (searchQuery == null) {
+	        searchQuery = "";
+	    }
 		if (cat != null && !cat.isEmpty()) {
-			listFilteredProducts(request, response);
+			listFilteredProducts(request, response,searchQuery);
 		} else {
-			listAllProducts(request, response);
+			listAllProducts(request, response,searchQuery);
 		}
 	}
 
@@ -47,9 +53,9 @@ public class MenuController extends HttpServlet {
 	
 	
     // Method to list all products (READ operation)
-    private void listAllProducts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void listAllProducts(HttpServletRequest request, HttpServletResponse response, String searchQuery) throws ServletException, IOException {
         try {
-            request.setAttribute("products", ProductService.getInstance().getAllProducts());
+            request.setAttribute("products", ProductService.getInstance().getAllProducts(searchQuery));
             request.setAttribute("categories", CategoryServices.getInstance().getAllCategories());
         } catch (Exception e) {
             request.setAttribute("error", e);
@@ -58,10 +64,10 @@ public class MenuController extends HttpServlet {
         dispatcher.forward(request, response);
     }
     
-    private void listFilteredProducts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void listFilteredProducts(HttpServletRequest request, HttpServletResponse response, String searchQuery) throws ServletException, IOException {
         try {
         	int cat = Integer.parseInt(request.getParameter("cat"));
-            request.setAttribute("products", ProductService.getInstance().getProductsByCategory(cat));
+            request.setAttribute("products", ProductService.getInstance().getProductsByCategory(cat,searchQuery));
             request.setAttribute("categories", CategoryServices.getInstance().getAllCategories());
         } catch (Exception e) {
             request.setAttribute("error", e);
