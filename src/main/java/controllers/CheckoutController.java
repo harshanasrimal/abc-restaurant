@@ -11,10 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
+import models.Branch;
 import models.Customer;
 import models.Order;
 import models.OrderItem;
 import models.Product;
+import services.BranchServices;
 import services.ProductService;
 import utils.AuthUtil;
 
@@ -36,8 +40,19 @@ public class CheckoutController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String action = request.getParameter("action");
+        if (action.equals("branches")) {
+            // Default action or handle missing action
+            try {
+				getBranches(request, response);
+			} catch (IOException | ServletException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            return;
+        }else {
+        	response.getWriter().append("Served new at: ").append(request.getContextPath());        	
+        }
 	}
 
 	/**
@@ -54,10 +69,10 @@ public class CheckoutController extends HttpServlet {
         
         switch (action) {
         case "payment":
-            //listProducts(request, response);
+        	response.getWriter().append("Served at: ").append(request.getContextPath()); // should implement this
             break;
         default:
-        	//checkout(request, response);
+        	response.getWriter().append("Served at: ").append(request.getContextPath());
             break;
     }
         
@@ -96,6 +111,17 @@ public class CheckoutController extends HttpServlet {
             //OrderService.saveOrder(order);
             //write show UI part
 	}
+  }
+    
+    private void getBranches(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, SQLException {
+    	 List<Branch> branches = BranchServices.getInstance().getAllBranches();
+         Gson gson = new Gson();
+         String json = gson.toJson(branches);
+         response.setContentType("application/json");
+         response.setCharacterEncoding("UTF-8");
+
+         // Write the JSON to the response
+         response.getWriter().write(json);
   }
 
 }
