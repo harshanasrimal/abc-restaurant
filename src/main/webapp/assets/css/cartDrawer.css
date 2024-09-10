@@ -1,0 +1,105 @@
+/* Custom Modal to slide from the right */
+.modal.right .modal-dialog {
+    position: fixed;
+    right: 0;
+    top: 0;
+    margin: 0;
+    width: 300px;
+    height: 100%;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-out;
+}
+
+.modal.right .modal-content {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.modal.right.show .modal-dialog {
+    transform: translateX(0);
+}
+
+.add-to-cart{
+	width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background: #ffbe33;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    cursor: pointer;
+}
+.cart-item {
+    margin-bottom: 15px;
+}
+
+.cart-item-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cart-item-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.cart-item-details {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-item-name {
+    margin: 0;
+    font-size: 16px;
+}
+
+.cart-item-qty {
+    display: flex;
+    align-items: center;
+}
+
+.qty-btn {
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
+    cursor: pointer;
+    text-align: center;
+    font-size: 18px;
+    transition: background-color 0.2s ease;
+}
+
+.qty-btn:hover {
+    background-color: #ddd;
+}
+
+.cart-item-price {
+    font-size: 14px;
+    color: #888;
+    margin-top: 5px;
+}
+
+.remove-btn {
+    color: red;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.remove-btn:hover {
+    color: darkred;
+}
+
+hr {
+    border: 0.5px solid #ccc;
+}
