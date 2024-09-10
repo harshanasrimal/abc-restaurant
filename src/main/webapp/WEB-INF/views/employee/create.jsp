@@ -45,13 +45,13 @@
           <div class="form_container">
             <form action="" method="POST">
               <div class="form-group">
-                <input name="name" type="text" class="form-control" placeholder="Employee Name" />
+                <input name="name" type="text" class="form-control" placeholder="Employee Name" required />
               </div>
               <div class="form-group">
-                <input name="email" type="email" class="form-control" placeholder="Employee Email" />
+                <input name="email" type="email" class="form-control" placeholder="Employee Email" required />
               </div>
               <div class="form-group">
-                <input name="password" type="password" class="form-control" placeholder="Password" />
+                <input name="password" type="password" class="form-control" placeholder="Password" required />
               </div>
               <div class="form-group">
                 <select name="branch_id" class="form-control">
