@@ -75,9 +75,10 @@
             <div class="modal-footer">
                 <form id="checkoutForm" method="POST" action="${pageContext.request.contextPath}/checkout">
                     <input type="hidden" name="cartData" id="cartDataInput">
-                    <input type="hidden" name="deliveryDetails" id="deliveryDetailsInput">
-                    <input type="hidden" name="paymentType" id="paymentTypeInput">
+                    <input type="hidden" name="address" id="addressInput">
+                    <input type="hidden" name="branch" id="branchInput">
                     <input type="hidden" name="orderType" id="orderTypeInput">
+                    <input type="hidden" name="paymentType" id="paymentTypeInput">
                 </form>
             </div>                                                                                                                                       
         </div>                                                                                                                                                     

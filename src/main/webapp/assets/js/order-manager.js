@@ -106,6 +106,18 @@ function removeFromCart(index) {
 function checkout() {
     const cartData = JSON.parse(localStorage.getItem('cart'));
 	const cartString = cartData.map(item => `${item.productId}:${item.quantity}`).join(',');
+	
+	const deliveryAddress = document.getElementById('deliveryAddress').value;
+	const branch = document.getElementById('branch').value;
+	const orderType = document.getElementById('orderType').value;
+	const paymentType = document.getElementById('paymentType').value;
+
+	// Assign values to hidden fields in the form
+	document.getElementById('addressInput').value = deliveryAddress;
+	document.getElementById('branchInput').value = branch;
+	document.getElementById('orderTypeInput').value = orderType;
+	document.getElementById('paymentTypeInput').value = paymentType;
+	
 	document.getElementById('cartDataInput').value = cartString;
 	localStorage.removeItem('cart');
 	document.getElementById('checkoutForm').submit();
