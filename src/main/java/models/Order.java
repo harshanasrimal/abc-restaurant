@@ -41,6 +41,7 @@ public class Order {
     	this.total = total;
     	this.service_charge = BigDecimal.ZERO;
     	this.delivery_charge = BigDecimal.ZERO;
+    	this.status = "pending";
     }
 
 	public int getId() {
