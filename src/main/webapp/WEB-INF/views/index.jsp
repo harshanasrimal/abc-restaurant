@@ -32,14 +32,14 @@
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
                     <h1>
-                      Fast Food Restaurant
+                      Welcome to ABC Restaurant
                     </h1>
                     <p>
-                      Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
+                     Experience the Finest Dining with Flavors that Excite
                     </p>
                     <div class="btn-box">
-                      <a href="" class="btn1">
-                        Order Now
+                      <a href="menu/" class="btn1">
+                        Explore Our Menu
                       </a>
                     </div>
                   </div>
@@ -53,14 +53,14 @@
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
                     <h1>
-                      Fast Food Restaurant
+                      Fresh Ingredients, Perfect Taste
                     </h1>
                     <p>
-                      Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
-                    </p>
+                      Discover the Art of Fine Dining with Locally Sourced Ingredients
+                      </p>
                     <div class="btn-box">
-                      <a href="" class="btn1">
-                        Order Now
+                      <a href="menu/?cat=1" class="btn1">
+                        See Our Specials
                       </a>
                     </div>
                   </div>
@@ -74,14 +74,14 @@
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
                     <h1>
-                      Fast Food Restaurant
+                      Dine In, Takeaway, or Delivery
                     </h1>
                     <p>
-                      Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
+                    Savor Our Delicious Meals at Your Convenience  
                     </p>
                     <div class="btn-box">
-                      <a href="" class="btn1">
-                        Order Now
+                      <a href="menu/" class="btn1">
+                        Order Online
                       </a>
                     </div>
                   </div>
@@ -273,10 +273,7 @@
               </h2>
             </div>
             <p>
-              There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
-              in some form, by injected humour, or randomised words which don't look even slightly believable. If you
-              are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in
-              the middle of text. All
+At ABC Restaurant, we bring you the perfect blend of flavors and experiences. With a menu inspired by global cuisine and locally sourced ingredients, we promise a dining experience that excites your taste buds. Whether you're enjoying a meal in our cozy dining space, taking away, or ordering for delivery, we ensure quality and satisfaction in every bite.
             </p>
             <a href="">
               Read More
@@ -304,10 +301,10 @@
             <div class="box">
               <div class="detail-box">
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+                ABC Restaurant is my go-to spot! The food is always delicious, and the atmosphere makes it a perfect place to relax after a busy day.
                 </p>
                 <h6>
-                  Moana Michell
+                  Nuwan P.
                 </h6>
               </div>
             </div>
@@ -316,10 +313,22 @@
             <div class="box">
               <div class="detail-box">
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+                I was amazed by the freshness and quality of their food. The staff is friendly, and the service is excellent. Highly recommended!
                 </p>
                 <h6>
-                  Mike Hamell
+                  Tharushi G.
+                </h6>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="box">
+              <div class="detail-box">
+                <p>
+                I've been to many restaurants, but ABC Restaurant stands out for its attention to detail and fantastic flavors. A must-visit for any food lover!
+                </p>
+                <h6>
+                 Dilanka S.
                 </h6>
               </div>
             </div>
