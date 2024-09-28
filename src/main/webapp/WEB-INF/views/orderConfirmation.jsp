@@ -41,17 +41,17 @@
             </c:if>
 
             <h4>Order Details</h4>
-            <p>Order ID: ${orderId}</p>
-            <p>Total Amount: ${order.totalAmount}</p>
-            <p>Order Type: ${order.type}</p>
-            <p>Branch: ${order.branch_id}</p>
+            <p><strong>Order ID:</strong> ${orderId}</p>
+            <p><strong>Total Amount:</strong> Rs ${totalAmount}</p>
+            <p><strong>Order Type:</strong> ${orderType}</p>
+            <p><strong>Branch:</strong> ${branch_id}</p>
 
-            <h5>Items Ordered:</h5>
-            <ul>
-              <c:forEach var="item" items="${order.items}">
-                <li>Product ID: ${item.product_id}, Quantity: ${item.qty}, Total: ${item.total}</li>
-              </c:forEach>
-            </ul>
+            <!-- Display delivery details if the order is for delivery -->
+            <c:if test="${orderType == 'delivery'}">
+              <h5>Delivery Details:</h5>
+              <p><strong>Address:</strong> ${delivery.address}</p>
+              <p><strong>Contact Number:</strong> ${delivery.contactNumber}</p>
+            </c:if>
 
             <div class="btn_box">
               <a href="${pageContext.request.contextPath}/home" class="btn btn-primary">Go to Home</a>

@@ -15,10 +15,12 @@ import com.google.gson.Gson;
 
 import models.Branch;
 import models.Customer;
+import models.Delivery;
 import models.Order;
 import models.OrderItem;
 import models.Product;
 import services.BranchServices;
+import services.DeliveryServices;
 import services.OrderServices;
 import services.ProductService;
 import utils.AuthUtil;
@@ -87,6 +89,7 @@ public class CheckoutController extends HttpServlet {
 	    String cartData = request.getParameter("cartData");
 	    int branch_id = Integer.parseInt(request.getParameter("branch"));  // Get branch from request
 	    String order_type = request.getParameter("orderType");  // Get order type (pickup or delivery)
+	    String payment_type = request.getParameter("paymentType");  // Get payment type
 
 	    try {
 	        if (cartData != null && !cartData.isEmpty()) {
@@ -113,7 +116,7 @@ public class CheckoutController extends HttpServlet {
 
 	                    // Create an OrderItem and add it to the list
 	                    orderItems.add(new OrderItem(productId, quantity, itemTotal));
-	                    totalAmount = totalAmount.add(itemTotal);
+						totalAmount = totalAmount.add(itemTotal);
 	                } else {
 	                    throw new Exception("Invalid product ID: " + productId);
 	                }
@@ -121,17 +124,40 @@ public class CheckoutController extends HttpServlet {
 
 	            // Create an Order object and set the order items
 	            Order order = new Order(customer.getId(), branch_id, order_type, totalAmount);
-	            order.setItems(orderItems);
+				order.setItems(orderItems);
 
-	            // Save the order using OrderServices
+	            // Save the order using OrderServices and get the order ID
 	            int orderId = OrderServices.getInstance().addOrder(order);
 
-	            // Redirect or show confirmation UI
+	            // Handle delivery details if the order type is delivery
+	            Delivery delivery = null;
+	            if ("delivery".equalsIgnoreCase(order_type)) {
+	                String deliveryAddress = request.getParameter("address");
+	                String contactNumber = request.getParameter("contactNumber");
+
+	                if (deliveryAddress == null || deliveryAddress.isEmpty()) {
+	                    throw new Exception("Delivery address is required for delivery orders.");
+	                }
+
+	                if (contactNumber == null || contactNumber.isEmpty()) {
+	                    throw new Exception("Contact number is required for delivery orders.");
+	                }
+
+	                // Create a Delivery object and save the delivery details
+	                delivery = new Delivery(orderId, deliveryAddress, contactNumber, "Pending");
+	                DeliveryServices.getInstance().addDelivery(delivery);
+	            }
+
+	            // Redirect to confirmation page with total amount and delivery info
 	            request.setAttribute("orderId", orderId);
+	            request.setAttribute("totalAmount", totalAmount);  // Return total amount
+	            request.setAttribute("orderType", order_type);  // Return order type
+	            request.setAttribute("delivery", delivery);  // Return delivery details if applicable
 	            request.setAttribute("message", "Your order has been successfully placed!");
+
 	            request.getRequestDispatcher("/WEB-INF/views/orderConfirmation.jsp").forward(request, response);
 	        } else {
-	            throw new Exception("Cart is empty.");
+	            throw new Exception("Your cart is empty. Please add items to your cart.");
 	        }
 	    } catch (Exception e) {
 	        // Redirect to the error page with the error message
@@ -139,6 +165,7 @@ public class CheckoutController extends HttpServlet {
 	        request.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(request, response);
 	    }
 	}
+
 
 
     
