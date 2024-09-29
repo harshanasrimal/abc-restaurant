@@ -16,6 +16,16 @@ function previousStep(step) {
     nextStep(step);  // Reuse the nextStep function to show the previous step
 }
 
+// Function to show/hide delivery details based on the order type
+function toggleDeliveryDetails() {
+    const orderType = document.getElementById('orderType').value;
+    if (orderType === 'delivery') {
+        nextStep(3);  // Show delivery details step
+    } else {
+        nextStep(4);  // Skip to payment step if it's pickup
+    }
+}
+
 // Function to render the cart items inside the modal
 function renderCart() {
     const cartItemsContainer = document.getElementById('cart-items');
@@ -64,9 +74,6 @@ function renderCart() {
     cartTotal.innerHTML = `<p>Sub Total: Rs${totalPrice.toFixed(2)}</p>`;
 }
 
-
-
-
 // Function to update the quantity of a cart item
 function updateQuantity(index, delta) {
     cart[index].quantity += delta;
@@ -102,15 +109,36 @@ function removeFromCart(index) {
     renderCart(); // Re-render the cart
 }
 
-// Function to handle checkout (simplified)
+// Function to handle checkout
 function checkout() {
     const cartData = JSON.parse(localStorage.getItem('cart'));
-	const cartString = cartData.map(item => `${item.productId}:${item.quantity}`).join(',');
-	document.getElementById('cartDataInput').value = cartString;
-	localStorage.removeItem('cart');
-	document.getElementById('checkoutForm').submit();
+    const cartString = cartData.map(item => `${item.productId}:${item.quantity}`).join(',');
+
+    const deliveryAddress = document.getElementById('deliveryAddress').value;
+    const branch = document.getElementById('branch').value;
+    const orderType = document.getElementById('orderType').value;
+    const paymentType = document.getElementById('paymentType').value;
+
+    // For delivery-specific details
+    const contactNumber = document.getElementById('contactNumber') ? document.getElementById('contactNumber').value : '';
+
+    // Assign values to hidden fields in the form
+    document.getElementById('addressInput').value = deliveryAddress;
+    document.getElementById('branchInput').value = branch;
+    document.getElementById('orderTypeInput').value = orderType;
+    document.getElementById('paymentTypeInput').value = paymentType;
+
+    if (orderType === 'delivery') {
+        document.getElementById('contactNumberInput').value = contactNumber;
+    }
+
+    // Save cart data
+    document.getElementById('cartDataInput').value = cartString;
+
+    // Clear cart from localStorage and submit the form
+    localStorage.removeItem('cart');
+    document.getElementById('checkoutForm').submit();
 }
 
 // Initial render when the page loads
 renderCart();
-

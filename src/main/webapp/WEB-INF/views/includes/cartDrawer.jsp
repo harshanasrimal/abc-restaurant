@@ -15,43 +15,47 @@
                     </div>
                     <!-- Total price -->
                     <div id="cart-total"></div>
-<c:choose>
-    <c:when test="${not empty loggedInUser}">
-        <button type="button" class="btn btn-primary" onclick="nextStep(2)">Proceed to Delivery</button>
-    </c:when>
-    <c:otherwise>
-        <a type="button" class="btn btn-primary" href="${pageContext.request.contextPath}/auth/?action=login">Login to Continue</a>
-    </c:otherwise>
-</c:choose>
+                    <c:choose>
+                        <c:when test="${not empty loggedInUser}">
+                            <button type="button" class="btn btn-primary" onclick="nextStep(2)">Proceed to Select Branch & Order Type</button>
+                        </c:when>
+                        <c:otherwise>
+                            <a type="button" class="btn btn-primary" href="${pageContext.request.contextPath}/auth/?action=login">Login to Continue</a>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
 
-                <!-- Step 2: Delivery Details -->
+                <!-- Step 2: Select Branch & Order Type -->
                 <div id="step2" class="step" style="display:none;">
+                    <h6>Select Branch & Order Type</h6>
+                    <div class="form-group">
+                        <label for="branch">Branch</label>
+                        <select class="form-control" id="branch" name="branch">
+                            <option value="1">Kandy</option>
+                            <option value="2">Colombo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="orderType">Order Type</label>
+                        <select class="form-control" id="orderType" name="orderType" onchange="toggleDeliveryDetails()">
+                            <option value="pickup">Pickup</option>
+                            <option value="delivery">Delivery</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="nextStep(3)">Proceed</button>
+                    <button type="button" class="btn btn-secondary" onclick="previousStep(1)">Back</button>
+                </div>
+
+                <!-- Step 3: Delivery Details (only if delivery is selected) -->
+                <div id="step3" class="step" style="display:none;">
                     <h6>Delivery Details</h6>
                     <div class="form-group">
                         <label for="deliveryAddress">Address</label>
                         <input type="text" class="form-control" id="deliveryAddress" name="deliveryAddress" placeholder="Enter delivery address">
                     </div>
                     <div class="form-group">
-                        <label for="branch">Branch(should automate)</label>
-                        <select class="form-control" id="branch" name="branch">
-                            <option value="1">Kandy</option>
-                            <option value="2">Colombo</option>
-                        </select>
-                    </div>
-                    <button type="button" class="btn btn-primary" onclick="nextStep(3)">Proceed to Order Type</button>
-                    <button type="button" class="btn btn-secondary" onclick="previousStep(1)">Back</button>
-                </div>
-
-                <!-- Step 3: Order Type -->
-                <div id="step3" class="step" style="display:none;">
-                    <h6>Order Type</h6>
-                    <div class="form-group">
-                        <label for="orderType">Order Type</label>
-                        <select class="form-control" id="orderType" name="orderType">
-                            <option value="delivery">Delivery</option>
-                            <option value="pickup">Pickup</option>
-                        </select>
+                        <label for="contactNumber">Contact Number</label>
+                        <input type="text" class="form-control" id="contactNumber" name="contactNumber" placeholder="Enter your contact number">
                     </div>
                     <button type="button" class="btn btn-primary" onclick="nextStep(4)">Proceed to Payment</button>
                     <button type="button" class="btn btn-secondary" onclick="previousStep(2)">Back</button>
@@ -73,11 +77,13 @@
             </div> 
 
             <div class="modal-footer">
-                <form id="checkoutForm" method="POST" action="${pageContext.request.contextPath}/checkout">
+                <form id="checkoutForm" method="POST" action="${pageContext.request.contextPath}/checkout?action=placeOrder">
                     <input type="hidden" name="cartData" id="cartDataInput">
-                    <input type="hidden" name="deliveryDetails" id="deliveryDetailsInput">
-                    <input type="hidden" name="paymentType" id="paymentTypeInput">
+                    <input type="hidden" name="address" id="addressInput">
+                    <input type="hidden" name="branch" id="branchInput">
                     <input type="hidden" name="orderType" id="orderTypeInput">
+                    <input type="hidden" name="contactNumber" id="contactNumberInput">
+                    <input type="hidden" name="paymentType" id="paymentTypeInput">
                 </form>
             </div>                                                                                                                                       
         </div>                                                                                                                                                     
